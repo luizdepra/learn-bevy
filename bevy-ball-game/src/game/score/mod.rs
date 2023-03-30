@@ -12,8 +12,7 @@ pub struct ScorePlugin;
 
 impl Plugin for ScorePlugin {
     fn build(&self, app: &mut App) {
-        app.init_resource::<Score>()
-            .init_resource::<HighScore>()
+        app.init_resource::<HighScore>()
             .add_system(insert_score.in_schedule(OnEnter(AppState::Game)))
             .add_system(update_score.run_if(in_state(AppState::Game)))
             .add_system(update_high_scores)
